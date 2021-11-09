@@ -1,3 +1,4 @@
+import { Specification } from "../model/Specification";
 
 interface ISpecificationDTO {
     name: string
@@ -6,6 +7,7 @@ interface ISpecificationDTO {
 
 interface ISpecificationRepository {
     create({ name, description }: ISpecificationDTO): void
+    find(name: string): Specification
 }
 
 export { ISpecificationRepository, ISpecificationDTO }

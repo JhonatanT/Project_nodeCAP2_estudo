@@ -1,5 +1,5 @@
-import { Category } from "../model/Category"
-import { ICategoriesRespoitory, ICreateCategoryDTO } from "./ICategoriesRespoitory";
+import { Category } from "../../model/Category"
+import { ICategoriesRespoitory, ICreateCategoryDTO } from "../ICategoriesRespoitory";
 
 
 
@@ -7,8 +7,19 @@ class CategoriesRepository implements ICategoriesRespoitory {
 
     private categories: Category[] = []
 
-    constructor() {
+    private static INSTANCE: CategoriesRepository;
+
+    private constructor() {
         this.categories = [];
+    }
+
+    public static getInstace(): CategoriesRepository{
+
+        if(!CategoriesRepository.INSTANCE){
+            CategoriesRepository.INSTANCE = new CategoriesRepository();
+        }
+        
+        return CategoriesRepository.INSTANCE
     }
 
 
